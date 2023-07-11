@@ -9,7 +9,7 @@ This Readme is in three primary sections
 3. **Legal**: Legal restrictions on dataset use, onward distribution, etc.
 
 ## Contact
-The primary contact for questions regarding this dataset is andrew.secker@bbc.co.uk
+The primary contact for questions regarding this dataset is andrew dot secker at bbc.co.uk
 
 ## Distribution structure
 The primary location of the distribution is located on BBC R&D's Openstack infrastructure. Details regarding how to access this will have been circulated to the primary representative of each University.
@@ -20,24 +20,24 @@ github/
 	
 BBC/
 	metadata.xslx (spreadsheet of video file IDs and metadata)
-	video/
+	filtered-video/redux/
 		video files (.ts)
-	subs/
+	subtitles/redux/
 		subtitles files (.xml)
-	tsinfo
+	tsinfo/redux/
 		files created by tsinfo (.txt)
-	ffprobe
-		files created by ffprobe (.txt)
+	ffprobe/redux/
+		files created by ffprobe (.json)
 		
 ## Errors, omissions, etc.
-Please report any errors found in the dataset and descriptive metadata to the BBC.
+Please report any errors found in the dataset and descriptive metadata to the BBC. In turn, we will endeavour pass corrections to the other dataset users.
 
 # Dataset details
 
 ## General Description
 This dataset is a collection of broadcast TV programmes with subtitles and associated metadata, made available by the BBC Data Science Research Partnership (DSRP) initiative for academic research use. To use this dataset you must be affiliated with a DSRP partner university and have signed and returned to the BBC a copy of a Data Usage Agreement. 
 
-This dataset comprises of 10,166 programmes broadcast by the BBC in the UK between June 2007 and December 2021.
+This dataset comprises of 10,166 programmes broadcast by the BBC in the UK between June 2007 and December 2021 and contains content originally recorded between 1962 and 2017. 
 
 ### Dataset Composition
 Each programme is identified by a globally unique number, called a diskref. The video and audio for each programme is contained in an MEPG transport stream (TS) file with a .ts file extension. Subtitles are provided as an XML file for convenience. A checksum for each TS file is available to allow verification of dataset integrity.
@@ -52,10 +52,14 @@ A single spreadsheet file in .xlsx format is provided, holding descriptive metad
     + Output from `ffprobe` (part of `ffmpeg`)
 
 ## Data integrity
-It is most likely you are using you universitiy's local copy 
-A file containing checksums for each TS file can be found [here](https://github.com/bbc/dsrp_redux_dataset/blob/e021326244361ea85fe2bf7d90cc08a6ea76bfa9/checksums.txt). These checksums can be used to check the integrity of your copy of the dataset.
+It is most likely you are using you university's local copy 
+A file containing checksums for each TS file can be found [here](TODO). These checksums can be used to check the integrity of your copy of the dataset.
 
-## Spreadsheet Description
+## Metadata Spreadsheet
+The distribution contains a spreadsheet containing detailed metadata about the programmes in the dataset.
+
+Not all metadata is available for all programmes.
+
 A description of the columns in the spreadsheet are as follows:
 
 diskref
@@ -64,14 +68,32 @@ diskref
 length
 : The programme duration (seconds). Note: this is the duration of the programme itself rounded to the nearest 5 minutes. This is unlikely to match with the length of the TS file itself.
 
-tx
+tx_date
 : The transmission date and time for the instance of the programme contained within this dataset.
 
-original tx
+original_tx_date
 : The first transmission date and time for the programme (if available). 
 
 title
 : The title of the programme
+
+hd_source
+: The programme contained in the dataset is in HD resolution (The dataset contains programmes in HD resolution which is upscaled content originated in SD)
+
+sl
+: The programme contains sign language (in-vision BSL)
+
+ad
+: The programme contains audio description
+
+bw
+: The programme is in black and white 
+
+aspect
+: Aspect ratio as recorded
+
+Genre
+: Genre(s) associated with the programme
 
 synopsis (short)
 : A short length synopsis of the programme
@@ -81,21 +103,6 @@ synopsis (mid)
 
 synopsis (long)
 : A long length synopsis of the programme
-
-hd_source
-: The programme contained in the dataset is in HD resolution (note, this may be upscaled content originated in SD)
-
-sl
-: The programme contains sign language
-
-ad
-: The programme contains audio description
-
-bw
-: The programme is in black and white (TODO)
-
-Genre(s)
-: 0 or more genres associated with the programme
 
 
 ## Programme content
@@ -107,7 +114,6 @@ The dataset contains a broad variety of programme genres. Details of these genre
 + Childrens', including any content likely to contain images of children (i.e. schools programmes)
 + Music-based programming
 + Films
-+ Etc.
 
 Within the metadata spreadsheet, a programme may be labelled with multiple genres delimited by a colon (:) character. Genres exist in a hierarchy.
 
@@ -162,9 +168,6 @@ All TS files contain the original subtitles streams as broadcast as DVB or Telet
 
 For convenience, all TS files have an accompanying XML file containing the subtitles as Timed Text format XML. All files contain subtitles as text, with associated timing data. Some files will also contain position and colour data for the subtitles. If position and/or colour data is required for the remainder, please contact us.
 
-# Legal
-TODO
-Collective whole. Stats by genre, describe 
 
 ---
 
