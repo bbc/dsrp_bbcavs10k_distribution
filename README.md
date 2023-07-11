@@ -15,18 +15,29 @@ The primary contact for questions regarding this dataset is andrew dot secker at
 The primary location of the distribution is located on BBC R&D's Openstack infrastructure. Details regarding how to access this will have been circulated to the primary representative of each University.
 
 github/
+
     README.md (this file)
+	
     checksums.csv (checksums for all files in the distribution)
 	
 BBC/
+
     metadata.xslx (spreadsheet of video file IDs and metadata)
+	
     filtered-video/redux/
+	
         video files (.ts)
+		
     subtitles/redux/
+	
         subtitles files (.xml)
+		
     tsinfo/redux/
+	
         files created by tsinfo (.txt)
+		
     ffprobe/redux/
+	
         files created by ffprobe (.json)
 		
 ## Errors, omissions, etc.
@@ -40,10 +51,9 @@ This dataset is a collection of broadcast TV programmes with subtitles and assoc
 This dataset comprises of 10,166 programmes broadcast by the BBC in the UK between June 2007 and December 2021 and contains content originally recorded between 1962 and 2017. 
 
 ### Dataset Composition
-Each programme is identified by a globally unique number, called a diskref. The video and audio for each programme is contained in an MEPG transport stream (TS) file with a .ts file extension. Subtitles are provided as an XML file for convenience. A checksum for each TS file is available to allow verification of dataset integrity.
+Each programme is identified by a globally unique number, called a diskref, which looks like '5129483056238917697'. The video and audio for each programme is contained in an MEPG transport stream (TS) file with a .ts file extension. Subtitles are provided as an XML file for convenience. A checksum for each TS file is available in this github repository to allow verification of dataset integrity.
 
 A single spreadsheet file in .xlsx format is provided, holding descriptive metadata for each TS file.
-
 
 ## Additional files
 + A spreadsheet of programme metadata. **This spreadsheet comprehensively describes the content of the dataset**.
@@ -63,18 +73,31 @@ Not all metadata is available for all programmes. A missing value indicates that
 A description of the columns in the spreadsheet are as follows:
 
 **diskref**: A unique numerical identifier for the programme
+
 **length**: The programme duration (seconds). Note: this is the duration of the programme itself rounded to the nearest 5 minutes. This is unlikely to match with the length of the TS file itself.
+
 **tx_date**: The transmission date and time for the instance of the programme contained within this dataset.
+
 **original_tx_date**: The first transmission date and time for the programme (if available). 
+
 **title**: The title of the programme
+
 **Genre**: Genre(s) associated with the programme
+
 **synopsis (short)**: A short length synopsis of the programme
+
 **synopsis (mid)**: A medium length synopsis of the programme
+
 **synopsis (long)**: A long length synopsis of the programme
+
 **hd_source**: The programme contained in the dataset was recorded in HD (The dataset contains programmes in HD resolution which is upscaled content originated in SD)
+
 **sl**: The programme contains sign language (in-vision BSL)
+
 **ad**: The programme contains audio description
+
 **bw**: The programme is in black and white 
+
 **aspect**: Aspect ratio as recorded (The dataset will include content recorded in 4:3 transmitted in a 16:9 frame)
 
 
