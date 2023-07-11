@@ -15,19 +15,19 @@ The primary contact for questions regarding this dataset is andrew dot secker at
 The primary location of the distribution is located on BBC R&D's Openstack infrastructure. Details regarding how to access this will have been circulated to the primary representative of each University.
 
 github/
-	README.md (this file)
-	checksums.csv (checksums for all files in the distribution)
+    README.md (this file)
+    checksums.csv (checksums for all files in the distribution)
 	
 BBC/
-	metadata.xslx (spreadsheet of video file IDs and metadata)
-	filtered-video/redux/
-		video files (.ts)
-	subtitles/redux/
-		subtitles files (.xml)
-	tsinfo/redux/
-		files created by tsinfo (.txt)
-	ffprobe/redux/
-		files created by ffprobe (.json)
+    metadata.xslx (spreadsheet of video file IDs and metadata)
+    filtered-video/redux/
+        video files (.ts)
+    subtitles/redux/
+        subtitles files (.xml)
+    tsinfo/redux/
+        files created by tsinfo (.txt)
+    ffprobe/redux/
+        files created by ffprobe (.json)
 		
 ## Errors, omissions, etc.
 Please report any errors found in the dataset and descriptive metadata to the BBC. In turn, we will endeavour pass corrections to the other dataset users.
@@ -58,51 +58,24 @@ A file containing checksums for each TS file can be found [here](TODO). These ch
 ## Metadata Spreadsheet
 The distribution contains a spreadsheet containing detailed metadata about the programmes in the dataset.
 
-Not all metadata is available for all programmes.
+Not all metadata is available for all programmes. A missing value indicates that attribute is not
 
 A description of the columns in the spreadsheet are as follows:
 
-diskref
-: A unique numerical identifier for the programme
-
-length
-: The programme duration (seconds). Note: this is the duration of the programme itself rounded to the nearest 5 minutes. This is unlikely to match with the length of the TS file itself.
-
-tx_date
-: The transmission date and time for the instance of the programme contained within this dataset.
-
-original_tx_date
-: The first transmission date and time for the programme (if available). 
-
-title
-: The title of the programme
-
-hd_source
-: The programme contained in the dataset is in HD resolution (The dataset contains programmes in HD resolution which is upscaled content originated in SD)
-
-sl
-: The programme contains sign language (in-vision BSL)
-
-ad
-: The programme contains audio description
-
-bw
-: The programme is in black and white 
-
-aspect
-: Aspect ratio as recorded
-
-Genre
-: Genre(s) associated with the programme
-
-synopsis (short)
-: A short length synopsis of the programme
-
-synopsis (mid)
-: A medium length synopsis of the programme
-
-synopsis (long)
-: A long length synopsis of the programme
+**diskref**: A unique numerical identifier for the programme
+**length**: The programme duration (seconds). Note: this is the duration of the programme itself rounded to the nearest 5 minutes. This is unlikely to match with the length of the TS file itself.
+**tx_date**: The transmission date and time for the instance of the programme contained within this dataset.
+**original_tx_date**: The first transmission date and time for the programme (if available). 
+**title**: The title of the programme
+**Genre**: Genre(s) associated with the programme
+**synopsis (short)**: A short length synopsis of the programme
+**synopsis (mid)**: A medium length synopsis of the programme
+**synopsis (long)**: A long length synopsis of the programme
+**hd_source**: The programme contained in the dataset was recorded in HD (The dataset contains programmes in HD resolution which is upscaled content originated in SD)
+**sl**: The programme contains sign language (in-vision BSL)
+**ad**: The programme contains audio description
+**bw**: The programme is in black and white 
+**aspect**: Aspect ratio as recorded (The dataset will include content recorded in 4:3 transmitted in a 16:9 frame)
 
 
 ## Programme content
