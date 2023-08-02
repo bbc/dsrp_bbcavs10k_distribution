@@ -14,31 +14,31 @@ The primary contact for questions regarding this dataset is andrew dot secker at
 ## Distribution structure
 The primary location of the distribution is located on BBC R&D's Openstack infrastructure. Details regarding how to access this will have been circulated to the primary representative of each University.
 
-github/
+    github/
 
-    README.md (this file)
+        README.md (this file)
 	
-    checksums.csv (checksums for all files in the distribution)
+        checksums.sha256.txt (checksums for all files in the distribution)
 	
-BBC/
+    BBC/
 
-    metadata.xslx (spreadsheet of video file IDs and metadata)
+        metadata.xslx (spreadsheet of video file IDs and metadata)
 	
-    filtered-video/redux/
-	
-        video files (.ts)
+        filtered-video/redux/
 		
-    subtitles/redux/
-	
-        subtitles files (.xml)
+            video files (.ts)
 		
-    tsinfo/redux/
+        subtitles/redux/
 	
-        files created by tsinfo (.txt)
+            subtitles files (.xml)
 		
-    ffprobe/redux/
+        tsinfo/redux/
 	
-        files created by ffprobe (.json)
+            files created by tsinfo (.txt)
+		
+        ffprobe/redux/
+	
+            files created by ffprobe (.json)
 		
 ## Errors, omissions, etc.
 Please report any errors found in the dataset and descriptive metadata to the BBC. In turn, we will endeavour pass corrections to the other dataset users.
@@ -107,9 +107,10 @@ Due to licensing restrictions, the dataset only contains content produced by the
 ### Genres
 The dataset contains a broad variety of programme genres. Details of these genres can be found in the Metadata Spreadsheet file. Not all genres, however, are present. Certain types of programme or styles of programming have been filtered out for compliance reasons or due to editorial restrictions. A non-exhaustive list of programme types which have been explicitly excluded include:
 + News and current affairs
-+ Childrens', including any content likely to contain images of children (i.e. schools programmes)
-+ Music-based programming
++ Childrens', including any content likely to contain images of children (i.e. schools programmes for primay and secondary ages)
++ Music-based programming (music programmes, documentaries about bands, albums, etc.)
 + Films
++ Sport
 
 Within the metadata spreadsheet, a programme may be labelled with multiple genres delimited by a colon (:) character. Genres exist in a hierarchy.
 
@@ -152,7 +153,7 @@ The HD resolution of the video in the dataset is independent of the resolution o
 
 Due to the nature of these transport streams originating as broadcasts in the UK, there are some nuances in the video encoding which should be handled transparently by most video decoders but, if unexpected results occur, it is worth noting: 
 + The video may be encoded as a mix of interlace and progressive (50i and 25p) within the same video stream. The switch between interlace and progressive encoding will happen on a GOP boundary. (https://www.bbc.co.uk/blogs/researchanddevelopment/2011/04/software-upgrade-for-bbc-hd-on.shtml)
-+ GOPs may be variable length (TODO: Ref blog post about variable length GOPs here)
++ GOPs are variable length.
 
 ### Primary Audio and Audio Description
 Content will contain a single primary audio track or, in the majority of examples, two audio tracks comprising of the primary audio and an audio description track. If present in the PMT, the audio description track is always present, *even if the programme does not contain any audio description*.
