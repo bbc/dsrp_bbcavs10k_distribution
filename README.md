@@ -20,7 +20,7 @@ The primary location of the distribution is located on BBC R&D's Openstack infra
 	
         checksums.sha256.txt (checksums for all files in the distribution)
 	
-    BBC/
+    BBC (openstack)/
 
         metadata.xslx (spreadsheet of video file IDs and metadata)
 	
@@ -31,6 +31,7 @@ The primary location of the distribution is located on BBC R&D's Openstack infra
         subtitles/redux/
 	
             subtitles files (.xml)
+			Note 03/08/2023. We have been made aware some subtitles files appear to be empty. We are currently looking into the cause of this. If this may cause a problem, please contact us for an update. In the meantime, users are reminded that subtitles can be extracted from the .ts file using open source tools (see below).
 		
         tsinfo/redux/
 	
@@ -72,34 +73,51 @@ Not all metadata is available for all programmes. A missing value indicates that
 
 A description of the columns in the spreadsheet are as follows:
 
-**diskref**: A unique numerical identifier for the programme
+**Diskref**: A unique numerical identifier for the programme.
 
-**length**: The programme duration (seconds). Note: this is the duration of the programme itself rounded to the nearest 5 minutes. This is unlikely to match with the length of the TS file itself.
+**PIPs_title**: The title of the programme.
 
-**tx_date**: The transmission date and time for the instance of the programme contained within this dataset.
+**PIPs_genres**: Genre(s) associated with the programme.
 
-**original_tx_date**: The first transmission date and time for the programme (if available). 
+**PIPs_format**: Programme format.
 
-**title**: The title of the programme
+**PIPs_ad**: The programme contains audio description.
 
-**Genre**: Genre(s) associated with the programme
+**PIPs_aspect**: Aspect ratio as recorded (The dataset will include content recorded in 4:3 transmitted in a 16:9 frame).
 
-**synopsis (short)**: A short length synopsis of the programme
+**PIPs_audio**: Audio type.
 
-**synopsis (mid)**: A medium length synopsis of the programme
+**PIPs_colour**: Can be used to identify Black and White programmes.
 
-**synopsis (long)**: A long length synopsis of the programme
+**PIPs_original_quality**: Original recording resolution. The dataset contains programmes broadcast in HD resolution which is upscaled content originated in SD.
 
-**hd_source**: The programme contained in the dataset was recorded in HD (The dataset contains programmes in HD resolution which is upscaled content originated in SD)
+**PIPs_version**: Can be used to idenify programmes with in-vision sign language. These will be indicated as "Signed".
 
-**sl**: The programme contains sign language (in-vision BSL)
+**EIT_start_datetime**: The date and time of this programme recording from the programme schedule.
 
-**ad**: The programme contains audio description
+**EIT_duration**: The programme duration from the broadcast schedule. Note: this is the duration of the programme itself rounded to the nearest 5 minutes. This is unlikely to match with the length of the TS file itself.
 
-**bw**: The programme is in black and white 
+**EIT_title**: The title of the programme as found in the original broadcast.
 
-**aspect**: Aspect ratio as recorded (The dataset will include content recorded in 4:3 transmitted in a 16:9 frame)
+**EIT_synopsis**: The synopsis of the programme as found in the original broadcast.
 
+**EIT_pCRID**: Programme identifier, as found in the broadcast.
+
+**EIT_sCRID**: Series identifier, as found in the broadcast.
+
+**ffprobe_width**: Width of the video, as reported by ffprobe. Included here for convenience, full ffprobe output for each ts file is available as part of data download.
+
+**ffprobe_height**: Height of the video, as reported by ffprobe. Included here for convenience, full ffprobe output for each ts file is available as part of data download.
+
+**tsinfo_video**: Video atrtributes as reported by tsinfo. Included here for convenience, full tsinfo output for each ts file is available as part of data download.
+
+**First_TX**: The date and time of the first transmission of this programme.
+
+**PIPs_synopsis_short**: A short length synopsis of the programme.
+
+**PIPs_synopsis_mid**: A medium length synopsis of the programme. This synopsis should closely match the value of EIT_synopsis.
+
+**PIPs_synopsis_long**: A long length synopsis of the programme.
 
 ## Programme content
 Due to licensing restrictions, the dataset only contains content produced by the BBC.
