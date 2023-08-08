@@ -22,7 +22,7 @@ The primary location of the distribution is located on BBC R&D's Openstack infra
 	
     BBC (openstack)/
 
-        metadata.xslx (spreadsheet of video file IDs and metadata)
+        BBCAVS10k_summary.xlsx (spreadsheet of video file IDs and metadata)
 	
         filtered-video/redux/
 		
@@ -31,7 +31,7 @@ The primary location of the distribution is located on BBC R&D's Openstack infra
         subtitles/redux/
 	
             subtitles files (.xml)
-			Note 03/08/2023. We have been made aware some subtitles files appear to be empty. We are currently looking into the cause of this. If this may cause a problem, please contact us for an update. In the meantime, users are reminded that subtitles can be extracted from the .ts file using open source tools (see below).
+			Note 03/08/2023. We have been made aware some subtitles files appear to be empty. We are currently looking into the cause of this. If this may cause a problem, please contact us for an update. In the meantime, users are reminded that subtitles can be extracted from the TS file using open source tools.
 		
         tsinfo/redux/
 	
@@ -49,12 +49,12 @@ Please report any errors found in the dataset and descriptive metadata to the BB
 ## General Description
 This dataset is a collection of broadcast TV programmes with subtitles and associated metadata, made available by the BBC Data Science Research Partnership (DSRP) initiative for academic research use. To use this dataset you must be affiliated with a DSRP partner university and have signed and returned to the BBC a copy of a Data Usage Agreement. 
 
-This dataset comprises of 10,166 programmes broadcast by the BBC in the UK between June 2007 and December 2021 and contains content originally recorded between 1962 and 2017. 
+This dataset comprises of 10,160 programmes broadcast by the BBC in the UK between June 2007 and December 2021 and contains content originally recorded between 1962 and 2017. 
 
 ### Dataset Composition
-Each programme is identified by a globally unique number, called a diskref, which looks like '5129483056238917697'. The video and audio for each programme is contained in an MEPG transport stream (TS) file with a .ts file extension. Subtitles are provided as an XML file for convenience. A checksum for each TS file is available in this github repository to allow verification of dataset integrity.
+Each programme is identified by a globally unique number, called a diskref, which looks like '5129483056238917697'. All programmes are contained in an MEPG transport stream (TS) file with a .ts file extension. Subtitles are provided as a supplementary XML file for convenience. A checksum for each TS file is available in this github repository to allow verification of dataset integrity.
 
-A single spreadsheet file in .xlsx format is provided, holding descriptive metadata for each TS file.
+A single spreadsheet file in .xlsx format is provided, holding descriptive metadata for each programme.
 
 ## Additional files
 + A spreadsheet of programme metadata. **This spreadsheet comprehensively describes the content of the dataset**.
@@ -63,13 +63,12 @@ A single spreadsheet file in .xlsx format is provided, holding descriptive metad
     + Output from `ffprobe` (part of `ffmpeg`)
 
 ## Data integrity
-It is most likely you are using you university's local copy 
-A file containing checksums for each TS file can be found [here](TODO). These checksums can be used to check the integrity of your copy of the dataset.
+It is most likely you are using you university's local copy of the dataset. A file containing checksums for each TS file can be found [in this repository](https://github.com/bbc/dsrp_bbcavs10k_distribution/blob/main/checksums.sha256.txt). These checksums can be used to check the integrity of *your* copy against *our* checksums.
 
 ## Metadata Spreadsheet
 The distribution contains a spreadsheet containing detailed metadata about the programmes in the dataset.
 
-Not all metadata is available for all programmes. A missing value indicates that attribute is not
+Not all metadata is available for all programmes. A missing value indicates that particular attribute was not available, and should not be used to infer the presence or absence of the value in the programme itself.
 
 A description of the columns in the spreadsheet are as follows:
 
@@ -91,7 +90,7 @@ A description of the columns in the spreadsheet are as follows:
 
 **PIPs_original_quality**: Original recording resolution. The dataset contains programmes broadcast in HD resolution which is upscaled content originated in SD.
 
-**PIPs_version**: Can be used to idenify programmes with in-vision sign language. These will be indicated as "Signed".
+**PIPs_version**: Can be used to identify programmes with in-vision sign language. These will be indicated as "Signed".
 
 **EIT_start_datetime**: The date and time of this programme recording from the programme schedule.
 
@@ -109,7 +108,7 @@ A description of the columns in the spreadsheet are as follows:
 
 **ffprobe_height**: Height of the video, as reported by ffprobe. Included here for convenience, full ffprobe output for each ts file is available as part of data download.
 
-**tsinfo_video**: Video atrtributes as reported by tsinfo. Included here for convenience, full tsinfo output for each ts file is available as part of data download.
+**tsinfo_video**: Video attributes as reported by tsinfo. Included here for convenience, full tsinfo output for each ts file is available as part of data download.
 
 **First_TX**: The date and time of the first transmission of this programme.
 
@@ -119,8 +118,6 @@ A description of the columns in the spreadsheet are as follows:
 
 **PIPs_synopsis_long**: A long length synopsis of the programme.
 
-## Programme content
-Due to licensing restrictions, the dataset only contains content produced by the BBC.
 
 ### Genres
 The dataset contains a broad variety of programme genres. Details of these genres can be found in the Metadata Spreadsheet file. Not all genres, however, are present. Certain types of programme or styles of programming have been filtered out for compliance reasons or due to editorial restrictions. A non-exhaustive list of programme types which have been explicitly excluded include:
@@ -130,10 +127,10 @@ The dataset contains a broad variety of programme genres. Details of these genre
 + Films
 + Sport
 
-Within the metadata spreadsheet, a programme may be labelled with multiple genres delimited by a colon (:) character. Genres exist in a hierarchy.
+Within the metadata spreadsheet, a programme may be labelled with multiple genres delimited by a colon (:) character. Genres exist in a hierarchy up to 3 levels deep.
 
 ### Sign Language
-Some programmes may contain a sign language interpreter in the bottom-right hand corner. The sign language used will be BSL. Users interested in sign language research are directed to the BBC/Oxford University BOBSL dataset which contains a more comprehensive set of BSL signed content- https://www.bbc.co.uk/rd/projects/extol-dataset. Programmes with signing have been identified using **best efforts** and have been indicated in the programme metadata spreadsheet. 
+Some programmes may contain a sign language interpreter in the bottom-right hand corner. The sign language used will be BSL. Users interested in sign language research are directed to the BBC/Oxford University BOBSL dataset which contains a [more comprehensive set of BSL signed content](https://www.bbc.co.uk/rd/projects/extol-dataset). Programmes with signing have been identified using **best efforts** and have been indicated in the programme metadata spreadsheet. 
 
 ### Audio Description
 Some programmes will contain an audio description (AD) track in addition to the main programme audio. Programmes with AD have been identified using **best efforts** and have been indicated in the programme metadata spreadsheet. 
@@ -147,7 +144,7 @@ The dataset contains a small number of programmes in black and white. These have
 # Technical details
 
 ## General
-Each .ts file in the dataset is an off-air recording of a broadcast (https://www.bbc.co.uk/blogs/bbcinternet/2008/10/history_of_the_bbc_redux_proje.html). Individual TS files have been created from received digital terrestrial or digital satellite transmission. As such:.
+Each TS file in the dataset is an off-air recording of a broadcast (https://www.bbc.co.uk/blogs/bbcinternet/2008/10/history_of_the_bbc_redux_proje.html). Individual TS files have been created from received digital terrestrial or digital satellite transmission. As such:.
 + The PIDs on which the elementary streams are found (i.e. audio, video and subtitles) will differ between individual TS files.
 + Data other than the audio, video, subtitles will be present
 
@@ -176,10 +173,10 @@ Due to the nature of these transport streams originating as broadcasts in the UK
 ### Primary Audio and Audio Description
 Content will contain a single primary audio track or, in the majority of examples, two audio tracks comprising of the primary audio and an audio description track. If present in the PMT, the audio description track is always present, *even if the programme does not contain any audio description*.
 
-Be advised: Many tools used to extract the audio from a TS file, transcode, and so on will assume one audio track is present in the source or pick the first audio track listed in the PMT as the primary audio track. This can lead to unexpected results in the output, namely the AD track (which may be silent) being output instead of the primary audio. Users may wish to check the audio language type in the PMT to identify the correct audio track and .
+Be advised: Some tools used to extract the audio from a TS file may assume one audio track is present or otherwise pick the first audio track listed in the PMT as the primary audio track. This can lead to unexpected results in the output, namely the AD track (which may be silent) being output instead of the primary audio. Users may wish to check the audio language type in the PMT of the TS (using the output of tsinfo, for example) in order to identify the correct audio track, and manually force the use of the required track.
 
 ### Subtitles
-All TS files contain the original subtitles streams as broadcast as DVB or Teletext format. Some files will contain both. If required, these can be stripped out using a number of open-source applications. The subtitlting descriptor against the appropriate stream in the PMT should be checked to determine the subtitle type.
+All TS files contain the original subtitles streams as broadcast as DVB or Teletext format. Some files will contain both. If required, these can be stripped out using a number of open-source applications. The subtitling descriptor against the appropriate stream in the PMT should be checked to determine the subtitle type.
 
 For convenience, all TS files have an accompanying XML file containing the subtitles as Timed Text format XML. All files contain subtitles as text, with associated timing data. Some files will also contain position and colour data for the subtitles. If position and/or colour data is required for the remainder, please contact us.
 
