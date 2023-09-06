@@ -136,7 +136,7 @@ Some programmes may contain a sign language interpreter in the bottom-right hand
 Some programmes will contain an audio description (AD) track in addition to the main programme audio. Programmes with AD have been identified using **best efforts** and have been indicated in the programme metadata spreadsheet. 
 
 ### Subtitles
-All programmes include subtitles.
+Almost all (but not quite all) programmes include subtitles. In limited cases, subtitles may not be availabe for some live content although everything broadcast from pre-recorded material will have subtitles.
 
 ### Black and White content
 The dataset contains a small number of programmes in black and white. These have been identified using **best efforts** and have been indicated in the programme metadata spreadsheet. 
@@ -176,7 +176,7 @@ Content will contain a single primary audio track or, in the majority of example
 Be advised: Some tools used to extract the audio from a TS file may assume one audio track is present or otherwise pick the first audio track listed in the PMT as the primary audio track. This can lead to unexpected results in the output, namely the AD track (which may be silent) being output instead of the primary audio. Users may wish to check the audio language type in the PMT of the TS (using the output of tsinfo, for example) in order to identify the correct audio track, and manually force the use of the required track.
 
 ### Subtitles
-All TS files contain the original subtitles streams as broadcast as DVB or Teletext format. Some files will contain both. If required, these can be stripped out using a number of open-source applications. The subtitling descriptor against the appropriate stream in the PMT should be checked to determine the subtitle type.
+All TS files contain the original subtitles streams as broadcast as DVB and/or Teletext format. Some files will contain both. If required, these can be stripped out using a number of open-source applications. The subtitling descriptor against the appropriate stream in the PMT should be checked to determine the subtitle type.
 
 For convenience, all TS files have an accompanying XML file containing the subtitles as Timed Text format XML. All files contain subtitles as text, with associated timing data. Some files will also contain position and colour data for the subtitles. If position and/or colour data is required for the remainder, please contact us.
 
